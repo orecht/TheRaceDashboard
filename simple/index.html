@@ -1,5 +1,6 @@
 ﻿<!DOCTYPE html>
 <html>
+
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width" />
@@ -37,17 +38,23 @@
 
 
     <script type="text/javascript">
-        $(document).ready(function () {
-                var chart = c3.generate({
-                bindto: '#chart',
+        $(document).ready(function() {
+            var chartRoyalFree = c3.generate({
+                bindto: '#chartRoyalFree',
                 data: {
                     columns: [
                         ['data', 261]
                     ],
                     type: 'gauge',
-                    onclick: function (d, i) { console.log("onclick", d, i); },
-                    onmouseover: function (d, i) { console.log("onmouseover", d, i); },
-                    onmouseout: function (d, i) { console.log("onmouseout", d, i); }
+                    onclick: function(d, i) {
+                        console.log("onclick", d, i);
+                    },
+                    onmouseover: function(d, i) {
+                        console.log("onmouseover", d, i);
+                    },
+                    onmouseout: function(d, i) {
+                        console.log("onmouseout", d, i);
+                    }
                 },
                 gauge: {
                     //        label: {
@@ -73,69 +80,74 @@
                     height: 180
                 }
             });
-        })
 
-        
+            var chartHomerton = c3.generate({
+                bindto: '#chartHomerton',
+                data: {
+                    columns: [
+                        ['data', 261]
+                    ],
+                    type: 'gauge',
+                    onclick: function(d, i) {
+                        console.log("onclick", d, i);
+                    },
+                    onmouseover: function(d, i) {
+                        console.log("onmouseover", d, i);
+                    },
+                    onmouseout: function(d, i) {
+                        console.log("onmouseout", d, i);
+                    }
+                },
+                gauge: {
+                    //        label: {
+                    //            format: function(value, ratio) {
+                    //                return value;
+                    //            },
+                    //            show: false // to turn off the min/max labels.
+                    //        },
+                    min: 0, // 0 is default, //can handle negative min e.g. vacuum / voltage / current flow / rate of change
+                    max: 2700, // 100 is default
+                    units: ' £',
+                    width: 70 // for adjusting arc thickness
+                },
+                color: {
+                    pattern: ['#FF0000', '#F97600', '#F6C600', '#60B044'], // the three color levels for the percentage values.
+                    threshold: {
+                        //            unit: 'value', // percentage is default
+                        //            max: 200, // 100 is default
+                        values: [30, 60, 90, 100]
+                    }
+                },
+                size: {
+                    height: 180
+                }
+            });
+        });
     </script>
 
 
 
 </head>
+
 <body>
-    <div class ="row" style="text-align: center">
+    <div class="row" style="text-align: center">
         <h1>The race: Barnet vs Hackney</h1>
 
         <div class="col-md-6">
             <h2>Royal Free Hospital</h2>
             <img src="images/royalfreecharity.png" />
-            <div id="chart"></div>
+            <div id="chartRoyalFree"></div>
+            <a href="https://www.justgiving.com/AccuveinsforRoyalFreePaediatrics/4w350m3/donate?amount=50.00&currency=GBP&reference=Dashboar&utm_source=sdisponsor&utm_medium=buttons&utm_campaign=buttontype"><img src="images/donate-button.png" alt="Donate to Royal Free with JustGiving" /></a>
         </div>
         <div class="col-md-6">
             <h2>Homerton Hospital</h2>
             <img src="images/homertonhope.jpg" />
-            <div class="widget-header"><div class="title">Raised (£)</div></div>
-            <div class="svg-wrapper">
-                <svg class="gauge" viewBox="0 0 300 240" xmlns="http://www.w3.org/2000/svg">
-                    <defs>
-                        <linearGradient id="grad0-view206" x1="0%" y1="0%" x2="0%" y2="100%">
-                            <stop class="grad0-stop-0" offset="0%"></stop>
-                            <stop class="grad0-stop-100" offset="100%"></stop>
-                        </linearGradient>
-                        <linearGradient id="grad2-view206" x1="0%" y1="0%" x2="100%" y2="0%">
-                            <stop class="grad2-stop-0" offset="0%"></stop>
-                            <stop class="grad2-stop-100" offset="100%"></stop>
-                        </linearGradient>
-                        <linearGradient id="grad-needle-view206" x1="100%" y1="0%" x2="0%" y2="0%">
-                            <stop class="grad-needle-stop-47" offset="47%"></stop>
-                            <stop class="grad-needle-stop-53" offset="53%"></stop>
-                            <stop class="grad-needle-stop-100" offset="100%"></stop>
-                        </linearGradient>
-                        <filter id="shadow-arc-view206">
-                            <feOffset dx="0" dy="2"></feOffset>
-                            <feGaussianBlur result="offset-blur" stdDeviation="3"></feGaussianBlur>
-                            <feComposite operator="out" in="SourceAlpha" in2="offset-blur" result="inverse"></feComposite>
-                            <feFlood class="shadow-arc" result="color"></feFlood>
-                            <feComposite operator="in" in="color" in2="inverse"></feComposite>
-                        </filter>
-                        <filter id="shadow-needle-view206" x="-25%" y="-25%" width="150%" height="150%">
-                            <feOffset dx="0" dy="8" in="SourceAlpha" result="offOut"></feOffset>
-                            <feGaussianBlur result="blurOut" stdDeviation="1.5" in="offOut"></feGaussianBlur>
-                        </filter>
-                        <clipPath id="clip-view206">
-                            <!-- Populated by d3 -->
-                            <path d="M-114,-1.3960973510279826e-14A114,114 0 0,1 114,0L59,0A59,59 0 0,0 -59,-7.225416114969383e-15Z"></path>
-                        </clipPath>
-                    </defs>
-                    <g class="arc" height="300" width="300" transform="translate(150, 185)"><path class="grad0" fill="url(#grad0-view206)" filter="" clip-path="" d="M-114,-1.3960973510279826e-14A114,114 0 0,1 114,0L59,0A59,59 0 0,0 -59,-7.225416114969383e-15Z"></path><path class="grad1" fill="url(#grad1-view206)" filter="url(#shadow-arc-view206)" clip-path="url(#clip-view206)" d="M-114,-1.3960973510279826e-14A114,114 0 0,1 114,0L59,0A59,59 0 0,0 -59,-7.225416114969383e-15Z"></path><path class="grad2" fill="url(#grad2-view206)" filter="" clip-path="" d="M-114,-1.3960973510279826e-14A114,114 0 0,1 -95.06864402894496,-62.91226368918662L-49.202192962348704,-32.559855768965A59,59 0 0,0 -59,-7.225416114969383e-15Z"></path></g>
-                    <g class="pointer-group" transform="translate(126.5, 161.5)"><g class="pointers" transform="translate(23.5, 23.5)"><path d="M9.5,0L0,-107L-9.5,0L0,5L9.5,0Z" transform="rotate(-56.50515463917526)" filter="url(#shadow-needle-view206)" class="pointer-shadow" fill=""></path><path d="M9.5,0L0,-107L-9.5,0L0,5L9.5,0Z" transform="rotate(-56.50515463917526)" filter="" class="" fill="url(#grad-needle-view206)"></path></g><g class="pointer-images"><image xlink:href="https://d2zpvlo04mfrdq.cloudfront.net/assets/1.1.18/images/widget/gauge-center.png" class="clear-blue" width="47" height="47"></image><image xlink:href="https://d2zpvlo04mfrdq.cloudfront.net/assets/1.1.18/images/widget/gauge-center-dark.png" class="late-night" width="47" height="47"></image></g></g>
-                    <text class="actual-value" text-anchor="middle" x="150" y="53">361</text>
-                    <text class="bottom-label" text-anchor="middle" x="150" y="225">30 day max: 361</text>
-                </svg>
-            </div>
-
+            <div id="chartHomerton"></div>
+            <a href="https://www.justgiving.com/accuveinforhomerton/4w350m3/donate?amount=50.00&currency=GBP&reference=Dashboar&utm_source=sdisponsor&utm_medium=buttons&utm_campaign=buttontype"><img src="images/donate-button.png" alt="Donate to Homerton with JustGiving" /></a>
         </div>
     </div>
 
 
 </body>
+
 </html>
