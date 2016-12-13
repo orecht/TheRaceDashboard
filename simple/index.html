@@ -39,89 +39,53 @@
 
     <script type="text/javascript">
         $(document).ready(function() {
-            var chartRoyalFree = c3.generate({
-                bindto: '#chartRoyalFree',
-                data: {
-                    columns: [
-                        ['data', 261]
-                    ],
-                    type: 'gauge',
-                    onclick: function(d, i) {
-                        console.log("onclick", d, i);
-                    },
-                    onmouseover: function(d, i) {
-                        console.log("onmouseover", d, i);
-                    },
-                    onmouseout: function(d, i) {
-                        console.log("onmouseout", d, i);
-                    }
-                },
-                gauge: {
-                    //        label: {
-                    //            format: function(value, ratio) {
-                    //                return value;
-                    //            },
-                    //            show: false // to turn off the min/max labels.
-                    //        },
-                    min: 0, // 0 is default, //can handle negative min e.g. vacuum / voltage / current flow / rate of change
-                    max: 2700, // 100 is default
-                    units: ' £',
-                    width: 70 // for adjusting arc thickness
-                },
-                color: {
-                    pattern: ['#FF0000', '#F97600', '#F6C600', '#60B044'], // the three color levels for the percentage values.
-                    threshold: {
-                        //            unit: 'value', // percentage is default
-                        //            max: 200, // 100 is default
-                        values: [30, 60, 90, 100]
-                    }
-                },
-                size: {
-                    height: 180
-                }
-            });
 
-            var chartHomerton = c3.generate({
-                bindto: '#chartHomerton',
-                data: {
-                    columns: [
-                        ['data', 261]
-                    ],
-                    type: 'gauge',
-                    onclick: function(d, i) {
-                        console.log("onclick", d, i);
+            function GetChartGenerateParams(id, value, maxValue) {
+                return {
+                    bindto: id,
+                    data: {
+                        columns: [
+                            ['data', value]
+                        ],
+                        type: 'gauge',
+                        onclick: function(d, i) {
+                            console.log("onclick", d, i);
+                        },
+                        onmouseover: function(d, i) {
+                            console.log("onmouseover", d, i);
+                        },
+                        onmouseout: function(d, i) {
+                            console.log("onmouseout", d, i);
+                        }
                     },
-                    onmouseover: function(d, i) {
-                        console.log("onmouseover", d, i);
+                    gauge: {
+                        //        label: {
+                        //            format: function(value, ratio) {
+                        //                return value;
+                        //            },
+                        //            show: false // to turn off the min/max labels.
+                        //        },
+                        min: 0, // 0 is default, //can handle negative min e.g. vacuum / voltage / current flow / rate of change
+                        max: maxValue, // 100 is default
+                        units: ' £',
+                        width: 70 // for adjusting arc thickness
                     },
-                    onmouseout: function(d, i) {
-                        console.log("onmouseout", d, i);
+                    color: {
+                        pattern: ['#FF0000', '#F97600', '#F6C600', '#60B044'], // the three color levels for the percentage values.
+                        threshold: {
+                            //            unit: 'value', // percentage is default
+                            //            max: 200, // 100 is default
+                            values: [30, 60, 90, 100]
+                        }
+                    },
+                    size: {
+                        height: 180
                     }
-                },
-                gauge: {
-                    //        label: {
-                    //            format: function(value, ratio) {
-                    //                return value;
-                    //            },
-                    //            show: false // to turn off the min/max labels.
-                    //        },
-                    min: 0, // 0 is default, //can handle negative min e.g. vacuum / voltage / current flow / rate of change
-                    max: 2700, // 100 is default
-                    units: ' £',
-                    width: 70 // for adjusting arc thickness
-                },
-                color: {
-                    pattern: ['#FF0000', '#F97600', '#F6C600', '#60B044'], // the three color levels for the percentage values.
-                    threshold: {
-                        //            unit: 'value', // percentage is default
-                        //            max: 200, // 100 is default
-                        values: [30, 60, 90, 100]
-                    }
-                },
-                size: {
-                    height: 180
-                }
-            });
+                };
+            };
+
+            var chartRoyalFree = c3.generate(GetChartGenerateParams('#chartRoyalFree', 261, 2700));
+            var chartHomerton = c3.generate(GetChartGenerateParams('#chartHomerton', 20, 2700));
         });
     </script>
 
@@ -135,13 +99,13 @@
 
         <div class="col-md-6">
             <h2>Royal Free Hospital</h2>
-            <img src="images/royalfreecharity.png" />
+            <img src="images/royalfreecharity.png" height="100px" />
             <div id="chartRoyalFree"></div>
             <a href="https://www.justgiving.com/AccuveinsforRoyalFreePaediatrics/4w350m3/donate?amount=50.00&currency=GBP&reference=Dashboar&utm_source=sdisponsor&utm_medium=buttons&utm_campaign=buttontype"><img src="images/donate-button.png" alt="Donate to Royal Free with JustGiving" /></a>
         </div>
         <div class="col-md-6">
             <h2>Homerton Hospital</h2>
-            <img src="images/homertonhope.jpg" />
+            <img src="images/homertonhope.jpg" height="100px" />
             <div id="chartHomerton"></div>
             <a href="https://www.justgiving.com/accuveinforhomerton/4w350m3/donate?amount=50.00&currency=GBP&reference=Dashboar&utm_source=sdisponsor&utm_medium=buttons&utm_campaign=buttontype"><img src="images/donate-button.png" alt="Donate to Homerton with JustGiving" /></a>
         </div>
