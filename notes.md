@@ -6,7 +6,7 @@ https://www.thedash.com/dashboard/r1x6MVuXx
 ## Justgiving API 
 * doc: https://developer.justgiving.com/apidocs/endpoints#/
 * API URl used by my server: http://api.justgiving.com/{mykey}/v1/fundraising/pages/AccuveinsforRoyalFreePaediatrics
-    * {mykey} can be foun in the JG developer portal at https://developer.justgiving.com/admin/applications
+    * {mykey} can be found in the JG developer portal at https://developer.justgiving.com/admin/applications
 
 
 * Royal free page: https://www.justgiving.com/fundraising/AccuveinsforRoyalFreePaediatrics
