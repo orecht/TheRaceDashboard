@@ -39,7 +39,7 @@
 
     <script type="text/javascript">
         $(document).ready(function() {
-            function GetChartGenerateParams(id) {
+            function GetChartGenerateParams(id, maxValue) {
                 return {
                     bindto: id,
                     data: {
@@ -65,7 +65,7 @@
                         //            show: false // to turn off the min/max labels.
                         //        },
                         min: 0, // 0 is default, //can handle negative min e.g. vacuum / voltage / current flow / rate of change
-                        max: 3000, // 100 is default
+                        max: maxValue, // 100 is default
                         units: ' £',
                         width: 70 // for adjusting arc thickness
                     },
@@ -83,8 +83,8 @@
                 };
             };
 
-            var chartRoyalFree = c3.generate(GetChartGenerateParams('#chartRoyalFree'));
-            var chartHomerton = c3.generate(GetChartGenerateParams('#chartHomerton'));
+            var chartRoyalFree = c3.generate(GetChartGenerateParams('#chartRoyalFree', 1940));
+            var chartHomerton = c3.generate(GetChartGenerateParams('#chartHomerton', 1700));
 
             jQuery.ajax({
                 url: "https://royalfreegettotal.azurewebsites.net/api/GetGraphRoyalFree",
