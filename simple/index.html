@@ -39,13 +39,12 @@
 
     <script type="text/javascript">
         $(document).ready(function() {
-
-            function GetChartGenerateParams(id, value, maxValue) {
+            function GetChartGenerateParams(id) {
                 return {
                     bindto: id,
                     data: {
                         columns: [
-                            ['data', value]
+                            ['data', 100]
                         ],
                         type: 'gauge',
                         onclick: function(d, i) {
@@ -66,7 +65,7 @@
                         //            show: false // to turn off the min/max labels.
                         //        },
                         min: 0, // 0 is default, //can handle negative min e.g. vacuum / voltage / current flow / rate of change
-                        max: maxValue, // 100 is default
+                        max: 3000, // 100 is default
                         units: ' £',
                         width: 70 // for adjusting arc thickness
                     },
@@ -84,8 +83,45 @@
                 };
             };
 
-            var chartRoyalFree = c3.generate(GetChartGenerateParams('#chartRoyalFree', 261, 2700));
-            var chartHomerton = c3.generate(GetChartGenerateParams('#chartHomerton', 20, 2700));
+            var chartRoyalFree = c3.generate(GetChartGenerateParams('#chartRoyalFree'));
+            var chartHomerton = c3.generate(GetChartGenerateParams('#chartHomerton'));
+
+            jQuery.ajax({
+                url: "http://royalfreegettotal.azurewebsites.net/api/GetGraphRoyalFree",
+                type: "GET",
+                dataType: "json",
+                crossDomain: true,
+                success: function(resultData) {
+                    chartRoyalFree.load({
+                        columns: [
+                            ['data', resultData.value]
+                        ]
+                    });
+
+                },
+                error: function(jqXHR, textStatus, errorThrown) {},
+
+                timeout: 120000,
+            });
+
+            jQuery.ajax({
+                url: "http://royalfreegettotal.azurewebsites.net/api/GetGraph",
+                type: "GET",
+                dataType: "json",
+                crossDomain: true,
+                success: function(resultData) {
+                    chartHomerton.load({
+                        columns: [
+                            ['data', resultData.value]
+                        ]
+                    });
+
+                },
+                error: function(jqXHR, textStatus, errorThrown) {},
+
+                timeout: 120000,
+            });
+
         });
     </script>
 
