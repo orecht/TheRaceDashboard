@@ -1,2 +1,2 @@
 # TheRaceDashboard
-Dashboard for accuvein funding race between 2 hospitals
+Dashboard for Accuvein funding race between Royal Free Hospital and Homerton Hospital 
