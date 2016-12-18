@@ -87,7 +87,7 @@
             var chartHomerton = c3.generate(GetChartGenerateParams('#chartHomerton', 1700));
 
             jQuery.ajax({
-                url: "https://royalfreegettotal.azurewebsites.net/api/GetGraphRoyalFree",
+                url: "http://royalfreegettotal.azurewebsites.net/api/GetGraphRoyalFree",
                 type: "GET",
                 dataType: "json",
                 success: function(resultData) {
@@ -104,7 +104,7 @@
             });
 
             jQuery.ajax({
-                url: "https://royalfreegettotal.azurewebsites.net/api/GetGraph",
+                url: "http://royalfreegettotal.azurewebsites.net/api/GetGraph",
                 type: "GET",
                 dataType: "json",
                 success: function(resultData) {
