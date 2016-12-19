@@ -97,6 +97,7 @@
                         ]
                     });
 
+                    $("#togoRoyalFree").html(resultData.end - resultData.data);
                 },
                 error: function(jqXHR, textStatus, errorThrown) {},
 
@@ -114,12 +115,12 @@
                         ]
                     });
 
+                    $("#togoHomerton").html(resultData.end - resultData.data);
                 },
                 error: function(jqXHR, textStatus, errorThrown) {},
 
                 timeout: 120000,
             });
-
         });
     </script>
 
@@ -143,6 +144,7 @@
             <h2>Royal Free Hospital</h2>
             <img src="images/royalfreecharity.png" height="100px" />
             <div id="chartRoyalFree"></div>
+            <p>£ <span id="togoRoyalFree"></span> to go</p>
             <div style="padding: 20px">
                 <a href="https://www.justgiving.com/AccuveinsforRoyalFreePaediatrics/4w350m3/donate?amount=50.00&currency=GBP&reference=Dashboar&utm_source=sdisponsor&utm_medium=buttons&utm_campaign=buttontype"><img src="images/donate-button.png" alt="Donate to Royal Free with JustGiving" /></a>
             </div>
@@ -154,6 +156,7 @@
             <h2>Homerton Hospital</h2>
             <img src="images/homertonhope.jpg" height="100px" />
             <div id="chartHomerton"></div>
+            <p>£ <span id="togoHomerton"></span> to go</p>
             <div style="padding: 20px">
                 <a href="https://www.justgiving.com/accuveinforhomerton/4w350m3/donate?amount=50.00&currency=GBP&reference=Dashboar&utm_source=sdisponsor&utm_medium=buttons&utm_campaign=buttontype"><img src="images/donate-button.png" alt="Donate to Homerton with JustGiving" /></a>
             </div>
